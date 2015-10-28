@@ -25,7 +25,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class JASidePanelController;
+@class BCSidePanelController;
 
 /* This optional category provides a convenience method for finding the current
  side panel controller that your view controller belongs to. It is similar to the
@@ -34,6 +34,6 @@
 @interface UIViewController (JASidePanel)
 
 // The nearest ancestor in the view controller hierarchy that is a side panel controller.
-@property (nonatomic, weak, readonly) JASidePanelController *sidePanelController;
+@property (nonatomic, weak, readonly) BCSidePanelController *sidePanelController;
 
 @end

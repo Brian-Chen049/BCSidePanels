@@ -26,12 +26,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class JASidePanelController;
+@class BCSidePanelController;
 
 @interface JAAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) JASidePanelController *viewController;
+@property (strong, nonatomic) BCSidePanelController *viewController;
 
 @end

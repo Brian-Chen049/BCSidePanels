@@ -25,15 +25,14 @@
 
 #import "UIViewController+JASidePanel.h"
 
-#import "JASidePanelController.h"
 
 @implementation UIViewController (JASidePanel)
 
-- (JASidePanelController *)sidePanelController {
+- (BCSidePanelController *)sidePanelController {
     UIViewController *iter = self.parentViewController;
     while (iter) {
-        if ([iter isKindOfClass:[JASidePanelController class]]) {
-            return (JASidePanelController *)iter;
+        if ([iter isKindOfClass:[BCSidePanelController class]]) {
+            return (BCSidePanelController *)iter;
         } else if (iter.parentViewController && iter.parentViewController != iter) {
             iter = iter.parentViewController;
         } else {

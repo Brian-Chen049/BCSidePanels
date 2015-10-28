@@ -26,7 +26,6 @@
 
 #import "JAAppDelegate.h"
 
-#import "JASidePanelController.h"
 #import "JACenterViewController.h"
 #import "JALeftViewController.h"
 #import "JARightViewController.h"
@@ -39,7 +38,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	self.viewController = [[JASidePanelController alloc] init];
+	self.viewController = [[BCSidePanelController alloc] init];
     self.viewController.shouldDelegateAutorotateToVisiblePanel = NO;
     
 	self.viewController.leftPanel = [[JALeftViewController alloc] init];
