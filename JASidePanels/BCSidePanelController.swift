@@ -24,4 +24,5 @@ class BCSidePanelController: JASidePanelController {
 //  // toggle them opened/closed
 //  func toggleLeftPanel(id:sender)
 //  func toggleRightPanel(id:sender)
+  
 }
