@@ -308,6 +308,7 @@ static char ja_kvoContext;
 - (void)_layoutSideContainers:(BOOL)animate duration:(NSTimeInterval)duration {
     CGRect leftFrame = self.view.bounds;
     CGRect rightFrame = self.view.bounds;
+    leftFrame.size.width = self.leftVisibleWidth;
     if (self.style == JASidePanelMultipleActive) {
         // left panel container
         leftFrame.size.width = self.leftVisibleWidth;
@@ -693,6 +694,7 @@ static char ja_kvoContext;
             _leftPanel.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
             [self stylePanel:_leftPanel.view];
             [self.leftPanelContainer addSubview:_leftPanel.view];
+            [self.view bringSubviewToFront:self.leftPanelContainer];
         }
         
         self.leftPanelContainer.hidden = NO;
@@ -785,7 +787,7 @@ static char ja_kvoContext;
             break;
 		}
         case JASidePanelLeftVisible: {
-            frame.origin.x = self.leftVisibleWidth;
+//            frame.origin.x = self.leftVisibleWidth;
             if (self.style == JASidePanelMultipleActive) {
                 frame.size.width = self.view.bounds.size.width - self.leftVisibleWidth;
             }
