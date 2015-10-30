@@ -31,7 +31,6 @@ typedef enum _JASidePanelStyle {
 } JASidePanelStyle;
 
 typedef enum _JASidePanelState {
-    JASidePanelNone = 0,
     JASidePanelCenterVisible = 1,
     JASidePanelLeftVisible,
     JASidePanelRightVisible
