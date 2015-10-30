@@ -173,5 +173,11 @@ typedef enum _JASidePanelState {
 // new ly added
 - (void)_configureContainers;
 - (void)_swapCenter:(UIViewController *)previous previousState:(JASidePanelState)previousState with:(UIViewController *)next;
+- (void)_layoutSideContainers:(BOOL)animate duration:(NSTimeInterval)duration;
+- (void)_layoutSidePanels;
+- (void)styleContainer:(UIView *)container animate:(BOOL)animate duration:(NSTimeInterval)duration;
+- (void)_loadCenterPanelWithPreviousState:(JASidePanelState)previousState;
+- (void)_placeButtonForLeftPanel;
+- (CGRect)_adjustCenterFrame;
 
 @end
