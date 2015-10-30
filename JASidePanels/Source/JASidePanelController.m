@@ -28,19 +28,16 @@
 
 static char ja_kvoContext;
 
-@interface JASidePanelController() {
-    CGRect _centerPanelRestingFrame;		
-    CGPoint _locationBeforePan;
-}
+@interface JASidePanelController()
 
-@property (nonatomic, readwrite) JASidePanelState state;
+//@property (nonatomic, readwrite) JASidePanelState state;
 @property (nonatomic, weak) UIViewController *visiblePanel;
 @property (nonatomic, strong) UIView *tapView;
 
 // panel containers
-@property (nonatomic, strong) UIView *leftPanelContainer;
-@property (nonatomic, strong) UIView *rightPanelContainer;
-@property (nonatomic, strong) UIView *centerPanelContainer;
+//@property (nonatomic, strong) UIView *leftPanelContainer;
+//@property (nonatomic, strong) UIView *rightPanelContainer;
+//@property (nonatomic, strong) UIView *centerPanelContainer;
 
 @end
 

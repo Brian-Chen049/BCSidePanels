@@ -31,14 +31,16 @@ typedef enum _JASidePanelStyle {
 } JASidePanelStyle;
 
 typedef enum _JASidePanelState {
+    JASidePanelNone = 0,
     JASidePanelCenterVisible = 1,
     JASidePanelLeftVisible,
     JASidePanelRightVisible
 } JASidePanelState;
 
 @interface JASidePanelController : UIViewController<UIGestureRecognizerDelegate>
-
 #pragma mark - Usage
+@property (nonatomic) CGRect centerPanelRestingFrame;
+@property (nonatomic) CGPoint locationBeforePan;
 
 // set the panels
 @property (nonatomic, strong) UIViewController *leftPanel;   // optional
@@ -136,7 +138,7 @@ typedef enum _JASidePanelState {
 #pragma mark - Nuts & Bolts
 
 // Current state of panels. Use KVO to monitor state changes
-@property (nonatomic, readonly) JASidePanelState state;
+@property (nonatomic) JASidePanelState state;
 
 // Whether or not the center panel is completely hidden
 @property (nonatomic, assign) BOOL centerPanelHidden;
@@ -164,8 +166,13 @@ typedef enum _JASidePanelState {
 @property (nonatomic, assign) BOOL allowRightSwipe; // defaults to YES
 
 // Containers for the panels.
-@property (nonatomic, strong, readonly) UIView *leftPanelContainer;
-@property (nonatomic, strong, readonly) UIView *rightPanelContainer;
-@property (nonatomic, strong, readonly) UIView *centerPanelContainer;
+@property (nonatomic, strong) UIView *leftPanelContainer;
+@property (nonatomic, strong) UIView *rightPanelContainer;
+@property (nonatomic, strong) UIView *centerPanelContainer;
+
+
+// new ly added
+- (void)_configureContainers;
+- (void)_swapCenter:(UIViewController *)previous previousState:(JASidePanelState)previousState with:(UIViewController *)next;
 
 @end

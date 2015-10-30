@@ -24,5 +24,36 @@ class BCSidePanelController: JASidePanelController {
 //  // toggle them opened/closed
 //  func toggleLeftPanel(id:sender)
 //  func toggleRightPanel(id:sender)
+
+
+
+  //  [self _swapCenter:nil previousState:0 with:_centerPanel];
+  //  [self.view bringSubviewToFront:self.centerPanelContainer];
+  //  }
   
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    centerPanelContainer = UIView(frame: view.bounds)
+    centerPanelRestingFrame = centerPanelContainer.frame
+    centerPanelHidden = false
+    
+    leftPanelContainer = UIView(frame: view.bounds)
+    leftPanelContainer.hidden = true
+    
+    rightPanelContainer = UIView(frame: view.bounds)
+    rightPanelContainer.hidden = true
+    
+    self._configureContainers()
+    view.addSubview(centerPanelContainer)
+    view.addSubview(leftPanelContainer)
+    view.addSubview(rightPanelContainer)
+    
+    state = JASidePanelCenterVisible
+    
+    _swapCenter(nil, previousState: JASidePanelState(0), with: centerPanel)
+    view.bringSubviewToFront(centerPanelContainer)
+  }
+
 }
