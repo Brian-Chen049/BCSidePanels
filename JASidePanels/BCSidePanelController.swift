@@ -123,5 +123,71 @@ class BCSidePanelController: JASidePanelController {
     centerPanelRestingFrame = frame
     return centerPanelRestingFrame
   }
+  
+  override func toggleLeftPanel(sender: AnyObject!) {
+    if state == JASidePanelLeftVisible {
+      showCenterPanelAnimated(true)
+    } else if state == JASidePanelCenterVisible {
+      showLeftPanelAnimated(true)
+    }
+  }
+  
+  override func toggleRightPanel(sender: AnyObject!) {
+    if state == JASidePanelRightVisible {
+      showCenterPanelAnimated(true)
+    } else if state == JASidePanelCenterVisible {
+      showRightPanelAnimated(true)
+    }
+  }
+  
+  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    if context == &ja_kvoContext {
+      if keyPath == "view" {
+        if centerPanel.isViewLoaded() && recognizesPanGesture {
+          addPanGestureToView(centerPanel.view)
+        } else if keyPath! == "viewCtrollers" && centerPanel === object {
+          // view controllers have changed, need to replace the button
+           _placeButtonForLeftPanel()
+        }
+      }
+    } else {
+      super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+    }
+  }
+  
+  func addPanGestureToView(view:UIView) {
+    let panGesture = UIPanGestureRecognizer(target: self, action: "_handlePan")
+    panGesture.delegate = self
+    panGesture.maximumNumberOfTouches = 1
+    panGesture.minimumNumberOfTouches = 1
+    view .addGestureRecognizer(panGesture)
+  }
+  
+  override func _placeButtonForLeftPanel() {
+    if let _ = leftPanel {
+      var buttonController = centerPanel
+      if buttonController.isKindOfClass(UINavigationController) {
+        let nav = buttonController as! UINavigationController
+        if nav.viewControllers.count > 0 {
+          buttonController = nav.navigationBar[0]
+        }
+      }
+    }
+  }
+  
+//  - (void)_placeButtonForLeftPanel {
+//  if (self.leftPanel) {
+//  UIViewController *buttonController = self.centerPanel;
+//  if ([buttonController isKindOfClass:[UINavigationController class]]) {
+//  UINavigationController *nav = (UINavigationController *)buttonController;
+//  if ([nav.viewControllers count] > 0) {
+//  buttonController = [nav.viewControllers objectAtIndex:0];
+//  }
+//  }
+//  if (!buttonController.navigationItem.leftBarButtonItem) {
+//  buttonController.navigationItem.leftBarButtonItem = [self leftButtonForCenterPanel];
+//  }
+//  }
+//  }
 }
 

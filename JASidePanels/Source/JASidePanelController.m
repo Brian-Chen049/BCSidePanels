@@ -26,7 +26,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "JASidePanelController.h"
 
-static char ja_kvoContext;
+
 
 @interface JASidePanelController()
 
@@ -470,13 +470,7 @@ static char ja_kvoContext;
 
 #pragma mark - Pan Gestures
 
-- (void)_addPanGestureToView:(UIView *)view {
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_handlePan:)];
-    panGesture.delegate = self;
-    panGesture.maximumNumberOfTouches = 1;
-    panGesture.minimumNumberOfTouches = 1;
-    [view addGestureRecognizer:panGesture];	
-}
+
 
 - (void)_handlePan:(UIGestureRecognizer *)sender {
 	if (!_recognizesPanGesture) {
@@ -983,21 +977,6 @@ static char ja_kvoContext;
     [self _showCenterPanel:animated bounce:NO];
 }
 
-- (void)toggleLeftPanel:(__unused id)sender {
-    if (self.state == JASidePanelLeftVisible) {
-        [self _showCenterPanel:YES bounce:NO];
-    } else if (self.state == JASidePanelCenterVisible) {
-        [self _showLeftPanel:YES bounce:NO];
-    }
-}
-
-- (void)toggleRightPanel:(__unused id)sender {
-    if (self.state == JASidePanelRightVisible) {
-        [self _showCenterPanel:YES bounce:NO];
-    } else if (self.state == JASidePanelCenterVisible) {
-        [self _showRightPanel:YES bounce:NO];
-    }
-}
 
 - (void)setCenterPanelHidden:(BOOL)centerPanelHidden {
     [self setCenterPanelHidden:centerPanelHidden animated:NO duration:0.0];

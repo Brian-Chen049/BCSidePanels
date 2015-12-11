@@ -24,7 +24,7 @@
  */
 
 #import <UIKit/UIKit.h>
-
+static char ja_kvoContext;
 typedef enum _JASidePanelStyle {
     JASidePanelSingleActive = 0,
     JASidePanelMultipleActive
